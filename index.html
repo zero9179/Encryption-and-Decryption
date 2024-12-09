@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCRYPTION</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body{
+            margin: 0px 5px;
+            margin-top: 10px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            background: radial-gradient(gray 40% ,black );
+        }
+        #main{
+            border: 3px  solid black;
+            padding: 10px;
+            height: 85vh;
+            border-radius: 20px;
+            /* background:linear-gradient(225deg,rgb(240, 8, 8),rgb(1, 1, 138)); */
+            background:linear-gradient(225deg,aqua ,rgb(195, 0, 255),rgb(0, 47, 255),rgb(119, 0, 255));
+            background-image: url(./encryp.jfif);
+            box-shadow: 2px 3px rgb(87, 77, 77);
+        }
+        label{
+            font-size: 23px;
+            color:ghostwhite;
+            font-family:cursive;
+        }
+        input{
+            height: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            background-color: gainsboro;
+        }
+        #key{
+            width: 80px;
+        }
+        #buttons{
+            margin-top: 30px;
+            padding-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+        }
+        button{
+            margin-top: 15px;
+            height: 35px;
+            font-size: 17px;
+            color: white;
+            background-color:rgba(27, 18, 18, 0.548);
+            border-radius: 16px;
+            border-style: none;
+            border: 1px solid white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #clearbutton{
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .icon{
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <header>
+        <h1 id="header_h1">Encryption & Decryption <br> of Text</h1>
+        <h2 id="header_h2">Encryption & Decryption <br> of Text</h2>
+    </header>
+   <label for="mytext">Enter Text: </label><input type="text" id="mytext">
+   <br><br>
+
+   <label for="key">Enter Key: </label><input id="key" type="password"></input>
+   <br><br>
+
+   <label for="output">Result Text: </label><input type="text" id="output">
+   <br>
+
+   <div id="buttons">
+        <button onclick="encryption()">Encrypt <i class="fa-solid fa-lock icon"></i></button>
+        <button onclick="dscription()">Decrypt <i class="fa-solid fa-lock-open icon"></i></button>
+    </div>
+
+    <div id="clearbutton">
+        <button onclick="clearField()">Clear Field</button> 
+    </div>
+
+</div> 
+   <script>
+    function encryption() {
+        let text = document.getElementById("mytext").value;
+        let key = document.getElementById("key").value
+
+        if("pranav"===key){
+        
+        let n = text.length
+        let result = "#" 
+
+        for(let i=0;i<n;i++) {
+            let charCode = text.charCodeAt(i)
+            
+            if(i%2==0){
+                let encrypetChar = String.fromCharCode((charCode)+10)
+                result  = result + encrypetChar
+            }
+            else{
+                let encrypetChar = String.fromCharCode((charCode)-10)
+                result  = result + encrypetChar
+            }
+        }
+
+        // document.getElementById("output").innerHTML = result;
+        document.getElementById("output").value = result;
+        }
+        else if(""===text){
+            document.getElementById("output").value = "";
+        }
+        else{
+        document.getElementById("output").value = "Wrong Key";
+        }
+    }
+
+    function dscription(){
+        let text = document.getElementById("mytext").value;
+        let key = document.getElementById("key").value
+
+        if(key==="gupta"){
+
+        let n = text.length
+        let result = "" 
+
+        for(let i=1;i<n;i++) {
+            let charCode = text.charCodeAt(i)
+            
+            if(i%2==0){
+                let encrypetChar = String.fromCharCode((charCode)+10)
+                result  = result + encrypetChar
+            }
+            else{
+                let encrypetChar = String.fromCharCode((charCode)-10)
+                result  = result + encrypetChar
+            }
+            
+        }
+        document.getElementById("output").value = result;
+        }
+        else if(""===text){
+            document.getElementById("output").value = "";
+        }
+        else{
+        document.getElementById("output").value = "Wrong Key";
+        }
+    }
+
+    function clearField() {
+        document.getElementById("mytext").value = ''
+        document.getElementById("key").value = ''
+        document.getElementById("output").value = ""
+    }
+   </script>
+</body>
+</html>
